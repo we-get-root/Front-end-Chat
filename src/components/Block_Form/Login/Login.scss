@@ -1,0 +1,32 @@
+.auth {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: auto;
+  text-align: center;
+  h1 {
+    font-size: 30px;
+    margin-top: 100px;
+  }
+  p {
+    color: silver;
+    margin-top: -10px;
+  }
+  &__block {
+    box-shadow: 0px 0px 15px 7px rgba(silver, .5);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(silver, .7);;
+    height: 350px;
+    width: 450px;
+    border-radius: 5px;
+  }
+}
+
+
+@import '~antd/dist/antd.css'
+
+
+
+
