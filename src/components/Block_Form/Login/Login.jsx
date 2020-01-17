@@ -1,63 +1,49 @@
 
 import React from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
+import { Formik, Field } from 'formik';
 
+import { validateEmail, validatePassword } from './modules/validation'
+import FormInput from './component/input';
 import './Login.scss'
 
 
-class LoginForm extends React.Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
-  };
-
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Login"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
-          Or <a href="">register now!</a>
-        </Form.Item>
+const LoginForm = (props) => (
+  <section className="login__input-form">
+    <Formik
+      initialValues={{
+        email: '',
+        pass: '',
+      }}
+      onSubmit={values => {
+        console.log(values);
+      }} >
+      <Form>
+        <span className="login__testeses">
+          <Field
+            // className="login__ityem-email"
+            name="email"
+            validate={validateEmail}
+            component={FormInput}
+            types="email"
+            placeholder="E-mail"
+            iconType="user"
+          />
+        </span>
+        <Field
+          // className="login__ityem-password"
+          name="pass"
+          validate={validatePassword}
+          component={FormInput}
+          types="password"
+          placeholder="Password"
+          iconType="lock"
+        />
+        <Button type="primary" block>Primary</Button>
       </Form>
-    );
-  }
-}
+    </Formik>
+  </section>
+)
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(LoginForm)
 
-export default WrappedNormalLoginForm;
+export default LoginForm;
