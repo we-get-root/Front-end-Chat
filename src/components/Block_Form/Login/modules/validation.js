@@ -1,21 +1,23 @@
 export function validatePassword(value) {
     let error;
+    // debugger
     if(!value) {
         error = 'Required';
     } else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/i.test(value)) {
-        error = 'Не валидный пароль'
+        error = 'Не валидный пароль';
     }
     return error;
 }
 
 export function validateEmail(value) {
-    let error;
+    let error = { typeError: null, status: false };
+
     if (!value) {
-        error = 'Required';
+        error.typeError = 'Необходимо заполнить!';
+        error.status = true;
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-        error = 'Невалидный E-mail';
+        error.typeError = 'Невалидный E-mail';
+        error.status = true;
     }
     return error;
 }
-
-// export default validateEmail;

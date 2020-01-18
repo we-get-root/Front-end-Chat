@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Button } from 'antd';
 import { Formik, Field } from 'formik';
 
-import { validateEmail, validatePassword } from './modules/validation'
-import FormInput from './component/input';
-import './Login.scss'
+import { validateEmail, validatePassword } from './modules/validation';
+import { FormInputEmail, FormInputPassword } from './component/input';
+import './Login.scss';
 
 
 const LoginForm = (props) => (
@@ -19,22 +19,18 @@ const LoginForm = (props) => (
         console.log(values);
       }} >
       <Form>
-        <span className="login__testeses">
-          <Field
-            // className="login__ityem-email"
-            name="email"
-            validate={validateEmail}
-            component={FormInput}
-            types="email"
-            placeholder="E-mail"
-            iconType="user"
-          />
-        </span>
         <Field
-          // className="login__ityem-password"
+          name="email"
+          validate={validateEmail}
+          component={FormInputEmail}
+          types="email"
+          placeholder="E-mail"
+          iconType="user"
+        />
+        <Field
           name="pass"
           validate={validatePassword}
-          component={FormInput}
+          component={FormInputPassword}
           types="password"
           placeholder="Password"
           iconType="lock"
