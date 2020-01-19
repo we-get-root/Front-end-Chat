@@ -1,45 +1,49 @@
-
 import React from 'react';
 import { Form, Button } from 'antd';
-import { Formik, Field } from 'formik';
+import { Formik, Field} from 'formik';
+import { Link } from 'react-router-dom';
 
-import { validateEmail, validatePassword } from './modules/validation';
+import { validateForLoginForm } from './modules/validation';
 import { FormInputEmail, FormInputPassword } from './component/input';
 import './Login.scss';
 
 
-const LoginForm = (props) => (
-  <section className="login__input-form">
-    <Formik
-      initialValues={{
-        email: '',
-        pass: '',
-      }}
-      onSubmit={values => {
-        console.log(values);
-      }} >
-      <Form>
-        <Field
-          name="email"
-          validate={validateEmail}
-          component={FormInputEmail}
-          types="email"
-          placeholder="E-mail"
-          iconType="user"
-        />
-        <Field
-          name="pass"
-          validate={validatePassword}
-          component={FormInputPassword}
-          types="password"
-          placeholder="Password"
-          iconType="lock"
-        />
-        <Button type="primary" block>Primary</Button>
-      </Form>
-    </Formik>
-  </section>
-)
+const LoginForm = (props) => {
+  return (
+    <section className="login">
+      <Formik
+        initialValues={{
+          email: '',
+          pass: '',
+        }}
+        onSubmit={ (values) => {
+          console.log(values);
+        }} >
+        <Form>
+          <Field
+            name="email"
+            validate={ validateForLoginForm }
+            component={ FormInputEmail }
+          />
+          <Field
+            name="pass"
+            validate={ validateForLoginForm }
+            component={ FormInputPassword }
+          />
+          <Button
+            className="login__button-large"
+            type="primary"
+            disabled={false}
+            size="large"
+            block > войти </Button>
+            <Link 
+              to="/registration"
+              className="login__link-registration" > зарегестрироватся </Link>
+        </Form>
+      </Formik>
+    </section>
+  )
+}
 
 
 export default LoginForm;

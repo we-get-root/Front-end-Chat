@@ -1,5 +1,14 @@
-.login__input-form { 
+.login { 
   grid-area: login;
+  &__button-large {
+    margin-bottom: 15px;
+  }
+  &__link-registration {
+    color: rgba(0, 0, 0, .4);
+    &:hover {
+      color: rgba(0, 0, 0, .1);
+    }
+  }
 }
 @import '~antd/dist/antd.css'
 
