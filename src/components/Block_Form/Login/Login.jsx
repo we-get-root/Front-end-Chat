@@ -20,7 +20,7 @@ const LoginForm = (props) => {
           console.log(values);
         }} >
         <Form>
-          <Field
+          <Field 
             name="email"
             validate={ validateForLoginForm }
             component={ FormInputEmail }
