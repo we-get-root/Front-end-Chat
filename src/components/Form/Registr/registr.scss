@@ -1,0 +1,12 @@
+.registration { 
+  grid-area: Registr;
+  &__button-registration {
+    margin-bottom: 15px;
+  }
+  &__link-login {
+    color: rgba(0, 0, 0, .4);
+    &:hover {
+      color: rgba(0, 0, 0, .1);
+    }
+  }
+}

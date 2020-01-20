@@ -1,14 +1,14 @@
 import React from 'react';
 import { Form, Button } from 'antd';
-import { Formik, Field} from 'formik';
+import { Formik, Field, useField} from 'formik';
 import { Link } from 'react-router-dom';
 
-import { validateForLoginForm } from './modules/validation';
-import { FormInputEmail, FormInputPassword } from './component/input';
-import './Login.scss';
+import { validateForLoginForm } from './../modules/validate';
+import { FormInputEmail, FormInputPassword } from './../component/input';
+import './auth.scss';
 
 
-const LoginForm = (props) => {
+const Authorization = (props) => {
   return (
     <section className="login">
       <Formik
@@ -22,14 +22,16 @@ const LoginForm = (props) => {
         <Form>
           <Field 
             name="email"
-            validate={ validateForLoginForm }
-            component={ FormInputEmail }
-          />
+            placeholders="E-Mail"
+            icon="user"
+            validate={ (values) =>  validateForLoginForm(values) }
+            component={ FormInputEmail } />
           <Field
             name="pass"
-            validate={ validateForLoginForm }
-            component={ FormInputPassword }
-          />
+            placeholders="password"
+            icon="lock"
+            validate={ (values) => validateForLoginForm(values) }
+            component={ FormInputPassword } />
           <Button
             className="login__button-large"
             type="primary"
@@ -46,4 +48,4 @@ const LoginForm = (props) => {
 }
 
 
-export default LoginForm;
+export default Authorization;

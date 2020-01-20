@@ -1,4 +1,5 @@
 export function validateForLoginForm(value) {
+
     let error = { typeError: null, status: false };
     if (!value) {
         error.typeError = 'Should not be empty';

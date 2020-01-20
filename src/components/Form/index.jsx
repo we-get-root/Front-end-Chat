@@ -2,7 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import './app.scss';
-import Login from './Login/Login';
+import Authorization from './Auth/Auth';
+import Registration from './Registr/Registr';
 
 const Auth = (props) => (
   <section className={'auth'}>
@@ -10,10 +11,10 @@ const Auth = (props) => (
     <p>Введите ваш логин и пароль</p>
     <div className={'auth__block'}>
       <Route exact path="/">
-        <Login />
+        <Authorization />
       </Route>
       <Route exact path='/registration'>
-        <h1>hello  world</h1>
+        <Registration />
       </Route>
     </div>
   </section>
