@@ -3,7 +3,7 @@ export function validateForLoginForm(value, name) {
 	switch (name) {
 		case 'email_pass': {
 			if (!value) {
-				error.typeError = true;
+				error.typeError = 'Should not be empty';
 				error.status = 'error';
 			} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
 				error.typeError = 'Invalid E-mail';

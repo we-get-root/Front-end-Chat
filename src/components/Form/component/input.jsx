@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Input, Form } from 'antd';
+import { Icon, Input, Form, Button } from 'antd';
 import { useField } from 'formik';
 
 
@@ -24,8 +24,10 @@ export const FormInputEmail = ({ field, form: { touched, errors }, placeholders,
 	)
 }
 
+// <= Distribute the code for checking the login and registration form into different components
+
 export const FormInputPassword = ({ field, form: { touched, errors }, placeholders, icon, expressionFor, switchFor, ...props }) => {
-	const type = ( typeof expressionFor === 'undefined' ? field.name : expressionFor )
+	const type = (typeof expressionFor === 'undefined' ? field.name : expressionFor)
 	const [meta] = useField(props)
 	const expression = {
 		forEmail: (touched[field.name] || errors[field.name] ? field.value === '' ? 'error' : errors[type].status ? 'error' : 'success' : null),
@@ -47,5 +49,22 @@ export const FormInputPassword = ({ field, form: { touched, errors }, placeholde
 					{...field} />
 			</Form.Item>
 		</>
+	)
+}
+
+
+
+export const ButtonForm = (props) => {
+
+	const [field, meta, helper] = useField(props)
+	
+	return (
+		<Button
+			className="registration__button-registration"
+			type="primary"
+			disabled={false}
+			size="large"
+			block > зарегестрироватся </Button>
+
 	)
 }

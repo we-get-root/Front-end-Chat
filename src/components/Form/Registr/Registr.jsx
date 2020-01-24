@@ -4,7 +4,7 @@ import { Formik, Field} from 'formik';
 import { Link } from 'react-router-dom';
 
 import { validateForLoginForm } from './../modules/validate';
-import { FormInputEmail, FormInputPassword } from './../component/input';
+import { FormInputEmail, FormInputPassword, ButtonForm } from './../component/input';
 import './registr.scss';
 
 
@@ -38,7 +38,6 @@ const Registration = (props) => {
             name="create_pass"
             placeholders="Create password"
             icon="lock"
-            // expressionFor="create_pass"
             switchFor="forEmail"
             validate={ (value) => validateForLoginForm(value, 'password') }
             component={ FormInputPassword } />
@@ -50,12 +49,7 @@ const Registration = (props) => {
             switchFor="forConfirmPass"
             validate={ (value) => validateForLoginForm(value, 'password') }
             component={ FormInputPassword } />
-          <Button
-            className="registration__button-registration"
-            type="primary"
-            disabled={false}
-            size="large"
-            block > зарегестрироватся </Button>
+          <ButtonForm />
             <Link 
               to="/"
               className="registration__link-login" > Войти в аккаунт </Link>
