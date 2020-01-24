@@ -24,13 +24,15 @@ const Authorization = (props) => {
             name="email"
             placeholders="E-Mail"
             icon="user"
-            validate={ (values) =>  validateForLoginForm(values) }
+            validate={ (values) =>  validateForLoginForm(values, 'email_pass') }
             component={ FormInputEmail } />
           <Field
             name="pass"
-            placeholders="password"
+            placeholders="Password"
             icon="lock"
-            validate={ (values) => validateForLoginForm(values) }
+            expressionFor="email"
+            switchFor="forEmail"
+            validate={ (values) => validateForLoginForm(values, 'email_pass') }
             component={ FormInputPassword } />
           <Button
             className="login__button-large"

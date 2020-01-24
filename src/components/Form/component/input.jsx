@@ -3,22 +3,20 @@ import { Icon, Input, Form } from 'antd';
 import { useField } from 'formik';
 
 
-
-export const FormInputEmail = ({ field, form: { touched, errors }, placeholders, icon, ...props }) => { 
-	debugger
+export const FormInputEmail = ({ field, form: { touched, errors }, placeholders, icon, ...props }) => {
 	return (
 		<>
 			<Form.Item
-			type="email"
 				hasFeedback
-				validateStatus={ touched[field.name] || errors[field.name] ? 'error' ? errors.email.status ? 'error' : 'success' : null : null  }
-				help={ touched[field.name] && errors[field.name] && errors.email.typeError } >
+				validateStatus={errors[field.name] || touched[field.name] ? 'error' ? field.value === '' ? 'error' : errors[field.name].status ? 'error' : 'success' : null : null}
+				help={touched[field.name] && errors[field.name] && errors[field.name].typeError} >
 				<Input
-					placeholder={ placeholders }
+					placeholder={placeholders}
 					allowClear
-					prefix={ <Icon 
-											type={ icon } 
-											style={{ color: 'rgba(0,0,0,.25)' }} /> }
+					prefix={
+						<Icon
+							type={icon}
+							style={{ color: 'rgba(0,0,0,.25)' }} />}
 					size="large"
 					{...field} />
 			</Form.Item>
@@ -26,24 +24,28 @@ export const FormInputEmail = ({ field, form: { touched, errors }, placeholders,
 	)
 }
 
-export const FormInputPassword = ({ field, form: { touched, errors }, placeholders, icon, ...props }) => {
-	const[f, meta, h] = useField(props)
+export const FormInputPassword = ({ field, form: { touched, errors }, placeholders, icon, expressionFor, switchFor, ...props }) => {
+	const type = ( typeof expressionFor === 'undefined' ? field.name : expressionFor )
+	const [meta] = useField(props)
+	const expression = {
+		forEmail: (touched[field.name] || errors[field.name] ? field.value === '' ? 'error' : errors[type].status ? 'error' : 'success' : null),
+		forConfirmPass: (touched[field.name] || errors[field.name] ? field.value === '' ? 'error' : field.value === meta.value.create_pass ? 'success' : 'error' : null)
+	}
 	return (
 		<>
 			<Form.Item
-			type="password"
 				hasFeedback
-				validateStatus={ touched[field.name] || errors[field.name] ? field.value === '' ? 'error' : errors.email.status ? 'error' : 'success' : null } >
+				validateStatus={expression[switchFor]} >
 				<Input.Password
-					placeholder={ placeholders } // <= Type comes in props is equal placeholder
+					placeholder={placeholders}
 					allowClear
-					prefix={ <Icon 
-											type={ icon }  
-											style={{ color: 'rgba(0,0,0,.25)' }} /> }
+					prefix={
+						<Icon
+							type={icon}
+							style={{ color: 'rgba(0,0,0,.25)' }} />}
 					size="large"
 					{...field} />
 			</Form.Item>
 		</>
 	)
 }
-	

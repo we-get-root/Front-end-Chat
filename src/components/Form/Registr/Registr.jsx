@@ -13,7 +13,7 @@ const Registration = (props) => {
     <section className="registration">
       <Formik
         initialValues={{
-          name_user: '',
+          user_name: '',
           add_login: '',
           create_pass: '',
           confirm_pass: '',
@@ -23,28 +23,32 @@ const Registration = (props) => {
         }} >
         <Form>
         <Field 
-            name="name_user"
+            name="user_name"
             placeholders="Your name"
             icon="user"
-            validate={ validateForLoginForm }
+            validate={ (value) => validateForLoginForm(value, 'user_name') }
             component={ FormInputEmail } />
           <Field 
             name="add_login"
             placeholders="Your e-mail"
             icon="mail"
-            validate={ validateForLoginForm }
+            validate={ (value) => validateForLoginForm(value, 'email_pass') }
             component={ FormInputEmail } />
           <Field
             name="create_pass"
             placeholders="Create password"
             icon="lock"
-            validate={ validateForLoginForm }
+            // expressionFor="create_pass"
+            switchFor="forEmail"
+            validate={ (value) => validateForLoginForm(value, 'password') }
             component={ FormInputPassword } />
           <Field
             name="confirm_pass"
             placeholders="Repeat password"
             icon="lock"
-            validate={ validateForLoginForm }
+            expressionFor="confirm_pass"
+            switchFor="forConfirmPass"
+            validate={ (value) => validateForLoginForm(value, 'password') }
             component={ FormInputPassword } />
           <Button
             className="registration__button-registration"
