@@ -4,7 +4,7 @@ export function validateForLoginForm(value, name) {
 		case 'email_pass': {
 			if (!value) {
 				error.typeError = 'Should not be empty';
-				error.status = 'error';
+				error.status = true;
 			} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
 				error.typeError = 'Invalid E-mail';
 				error.status = true;
