@@ -3,8 +3,8 @@ import { Form, Button } from 'antd';
 import { Formik, Field } from 'formik';
 import { Link } from 'react-router-dom';
 
-import { validateForLoginForm } from './../modules/validate';
-import { FormInputEmail, FormInputPassword } from './../component/input';
+import { validateForLoginForm } from './../../_modules/validate';
+import { FormInputEmail, FormInputPassword } from './../../_component/input';
 import './auth.scss';
 
 

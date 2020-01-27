@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from './components/Form/index';
+import Auth from './components/app';
 
 
 function App() {

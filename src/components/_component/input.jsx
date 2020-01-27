@@ -4,6 +4,7 @@ import { useField } from 'formik';
 
 
 export const FormInputEmail = ({ field, form: { touched, errors }, placeholders, icon, ...props }) => {
+	debugger
 	return (
 		<>
 			<Form.Item
