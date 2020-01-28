@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 
+import { Authorization} from './_modules/container/containerAuth'
 import './app.scss';
-import Authorization from './Form/Auth/Auth';
-import Registration from './Form/Registr/Registr';
-import { MyEnhancedForm } from './Form/hookForAuth'
+// import Authorization from './Form/Auth/Auth';
+// import Registration from './Form/Registr/Registr';
 
 const Auth = (props) => (
   <section className={'auth'}>
@@ -12,7 +12,7 @@ const Auth = (props) => (
     <p>Введите ваш логин и пароль</p>
     <div className={'auth__block'}>
 
-    <MyEnhancedForm />
+    <Authorization />
       {/* <Route exact path="/">
         <Authorization />
       </Route>

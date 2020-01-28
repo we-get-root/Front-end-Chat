@@ -1,0 +1,19 @@
+.login { 
+  grid-area: login;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  &__button-large {
+    margin-bottom: 15px;
+  }
+  &__link-registration {
+    color: rgba(0, 0, 0, .4);
+    &:hover {
+      color: rgba(0, 0, 0, .1);
+    }
+  }
+}
+@import '~antd/dist/antd.css'
+
+
+
+
