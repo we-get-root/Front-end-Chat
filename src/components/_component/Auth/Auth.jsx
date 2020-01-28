@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './auth.scss';
 
 
-const FormAuth = ({ value: { email, password }, touched, error, isValidateStatus, ...props }) => {
+const FormAuth = ({ value: { email, password }, touched, isValidateStatus, ...props }) => {
   const forEmail = isValidateStatus('email')
   const forPassword = isValidateStatus('password')
   return (

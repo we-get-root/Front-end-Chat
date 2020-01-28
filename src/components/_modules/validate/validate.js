@@ -25,7 +25,23 @@ export const validateForms = {
 		}
 		return error;
 	},
-	isEmpty: function (obj) {
+	user_name: function (value) {
+		let error = {}
+		if (!value) {
+			error.typeError = 'Should not be empty';
+			error.status = true
+		} else if (!/^[a-zA-Z'][a-zA-Z-' ]+[a-zA-Z']?$/i.test(value)) {
+			error.typeError = 'Invalid name format';
+			error.status = true;
+		}
+		return error;
+	},
+	confirm_password: function(value) {
+		let error = {}
+		return false;
+	},
+
+	_isEmpty: function (obj) {
 		for (let key in obj) { return false }
 		return true;
 	},
@@ -34,7 +50,7 @@ export const validateForms = {
 		const key = Object.keys(values)
 		const result = {}
 		for (let i = 0; i < key.length; ++i) {
-			const empty = this.isEmpty(this[key[i]](values[key[i]]))
+			const empty = this._isEmpty(this[key[i]](values[key[i]]))
 			if (!empty) {
 				result[key[i]] = this[key[i]](values[key[i]])
 			}

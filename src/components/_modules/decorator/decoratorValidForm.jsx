@@ -1,14 +1,14 @@
 export const DecoratorForm = (props) => {
 	const { component, values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
-	const modulForInternalProcessing = {
+	const moduleForInternalProcessing = {
 		_isEmptyCheck: function (obj, forInput) {
 			let status = (typeof obj[forInput] === 'undefined' ? false : true)
 			return status;
 		},
 		isValidateStatus: function (forInput) {
 			const result = {
-				touch: modulForInternalProcessing._isEmptyCheck(touched, forInput),
-				error: modulForInternalProcessing._isEmptyCheck(errors, forInput),
+				touch: moduleForInternalProcessing._isEmptyCheck(touched, forInput),
+				error: moduleForInternalProcessing._isEmptyCheck(errors, forInput),
 				status: null,
 				typeError: null,
 			}
@@ -30,7 +30,7 @@ export const DecoratorForm = (props) => {
 		component({
 			value: values,
 			touched: touched,
-			isValidateStatus: modulForInternalProcessing.isValidateStatus,
+			isValidateStatus: moduleForInternalProcessing.isValidateStatus,
 			handleChange: handleChange,
 			handleBlur: handleBlur,
 			handleSubmit: handleSubmit,
