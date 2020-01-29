@@ -1,25 +1,43 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter, Link } from 'react-router-dom';
 
-import {Authorization} from './_modules/container/containerAuth';
-import {Registration }from './_modules/container/containerRegis';
+import { Authorization } from './_modules/container/containerAuth';
+import { Registration } from './_modules/container/containerRegis';
 import './app.scss';
 
 
-const Auth = (props) => (
-  <section className={'auth'}>
-    <h1>Вход в аккаунт</h1>
-    <p>Введите ваш логин и пароль</p>
-    <div className={'auth__block'}>
-      <Route exact path="/">
-        <Authorization />
-      </Route>
-      <Route exact path='/registration'>
-        <Registration />
-      </Route>
-    </div>
-  </section>
-)
+const Auth = (props) => {
 
-export default Auth;
+  const whatForm = props.location.pathname !== '/registration' ?
+    { tagH: 'Войти в аккаунт', tagP: 'Введите ваш логин и пароль' } :
+    { tagH: 'Регистрация', tagP: 'Введите ваши данные' }
+
+  return (
+    <>
+      <section className={'auth'}>
+        <h1>{whatForm.tagH}</h1>
+        <p>{whatForm.tagP}</p>
+        <div className={'auth__block'}>
+          <Route exact path="/">
+            <Authorization />
+          </Route>
+          <Route exact path='/registration'>
+            <Registration />
+          </Route>
+        </div>
+        <Link to='/hi'>hi</Link>
+      </section>
+      <suction>
+        <Route exact path="/hi">
+        <h1>hi</h1>
+
+        </Route>
+      </suction>
+    </>
+  )
+
+}
+const BlockForm = withRouter(Auth)
+
+export default BlockForm;
 

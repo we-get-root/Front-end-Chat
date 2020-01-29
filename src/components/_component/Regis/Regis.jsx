@@ -1,10 +1,8 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
 import { Icon, Input, Form, Button } from 'antd';
 
-// import { validateForLoginForm } from './../../_modules/validate';
-// import { FormInputEmail, FormInputPassword, ButtonForm } from './../../_component/input';
 import './regis.scss';
 
 
@@ -39,7 +37,7 @@ const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touche
             help={forEmail.error ? forEmail.typeError : null} >
             <Input
               name="email"
-              placeholder="E-mail"
+              placeholder="Your e-mail"
               allowClear
               onChange={props.handleChange}
               onBlur={props.handleBlur}
@@ -53,7 +51,7 @@ const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touche
             help={forPassword.error ? forPassword.typeError : null} >
             <Input.Password
               name="password"
-              placeholder="Create a password"
+              placeholder="Create password"
               allowClear
               onChange={props.handleChange}
               onBlur={props.handleBlur}
@@ -67,7 +65,7 @@ const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touche
             help={forConfirmPassword.error ? forConfirmPassword.typeError : null} >
             <Input.Password
               name="confirm_password"
-              placeholder="Enter again password"
+              placeholder="Repeat password"
               allowClear
               onChange={props.handleChange}
               onBlur={props.handleBlur}
@@ -79,10 +77,10 @@ const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touche
             type="submit"
             onClick={props.handleSubmit}
             size="large"
-            block > войти </Button>
+            block > зарегестрироватся  </Button>
           <Link
-            to="/registration"
-            className="login__link-registration" > зарегестрироватся </Link>
+            to="/"
+            className="login__link-registration" > Войти в аккаун </Link>
         </Form>
       </Formik>
     </section>

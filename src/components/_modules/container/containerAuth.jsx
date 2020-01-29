@@ -23,10 +23,3 @@ export const Authorization = withFormik({
   },
   displayName: 'AuthForm',
 })(Container);
-
-
-
-
-
-
-
