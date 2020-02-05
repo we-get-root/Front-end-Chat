@@ -7,14 +7,14 @@ import './regis.scss';
 
 
 const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touched, isValidateStatus, ...props }) => {
-  const forUserName = isValidateStatus('user_name')
-  const forEmail = isValidateStatus('email')
-  const forPassword = isValidateStatus('password')
+  const forUserName        = isValidateStatus('user_name')
+  const forEmail           = isValidateStatus('email')
+  const forPassword        = isValidateStatus('password')
   const forConfirmPassword = isValidateStatus('confirm_password')
   return (
     <section className="login">
       <Formik
-        onSubmit={props.handleSubmit}  >
+        onSubmit={props.handleSubmit} >
         <Form>
           <Form.Item
             hasFeedback
@@ -79,7 +79,7 @@ const FormRegis = ({ value: { user_name, email, password, confirm_pass }, touche
             size="large"
             block > зарегестрироватся  </Button>
           <Link
-            to="/"
+            to="/auth"
             className="login__link-registration" > Войти в аккаун </Link>
         </Form>
       </Formik>

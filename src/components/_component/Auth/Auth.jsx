@@ -49,7 +49,7 @@ const FormAuth = ({ value: { email, password }, touched, isValidateStatus, ...pr
             size="large"
             block > войти </Button>
           <Link
-            to="/registration"
+            to="/regis"
             className="login__link-registration" > зарегестрироватся </Link>
         </Form>
       </Formik>

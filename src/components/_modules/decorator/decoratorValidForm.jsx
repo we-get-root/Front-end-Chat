@@ -1,9 +1,9 @@
 export const DecoratorForm = (props) => {
-	const { component, values, touched, errors, handleChange, handleBlur, handleSubmit } = props;
+	const { component, values, touched, errors, handleChange, handleBlur, handleSubmit } = props; // <= these values are taken from withForm;
 	const modules = {
 		_isEmptyCheck: function (obj, forInput) {
-			const status = (typeof obj[forInput] === 'undefined' ? false : true)
-			return status;
+			// check if the touch was then there is an error;
+			return (typeof obj[forInput] === 'undefined' ? false : true) 
 		},
 		isValidateStatus: function (forInput) {
 			const result = {
@@ -12,6 +12,8 @@ export const DecoratorForm = (props) => {
 				status: null,
 				typeError: null,
 			}
+			// only if it was touched, we enter the condition, 
+			// otherwise we return the default object;
 			if (result.touch) {
 				if (result.error) {
 					result.status = result.error ? 'error' : 'success';
@@ -25,6 +27,8 @@ export const DecoratorForm = (props) => {
 			}
 		},
 	}
+	// we get the component that needs to be wrapped by 
+	// the decorator through the tag attributes;
 	return (
 		component({
 			value: values,

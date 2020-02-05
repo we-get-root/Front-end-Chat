@@ -1,9 +1,9 @@
 import React from 'react';
 import { withFormik } from 'formik';
 
-import { validateForms } from './../validate/validate'
-import FormAuth from './../../_component/Auth/Auth';
-import { DecoratorForm } from './../decorator/decoratorValidForm'
+import { DecoratorForm } from './../../_modules/decorator/decoratorValidForm'
+import { validateForms } from './../../_modules/validate/validate'
+import FormAuth from './Auth';
 
 
 const Container = (props) => {
