@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Empty, Input, Icon } from 'antd';
+import { connect } from 'react-redux';
 
+import { thunkAddUserItem } from './../../_state/request'
 import UserItem from './../../_component/UserItem/UserItem'
 import Search from './../../_component/Search/Search'
 import './index.scss';
 
-import { users } from './testBackend/testBackend';
+// import { usersDef } from './testBackend/testBackend'; // <= initial object users (delete after connections redux)
 
 
-const PageIndex = (props) => {
-  const { TextArea } = Input;
 
-  const [filterArr, setFilterArr] = useState(users)
+const PageIndex = ({ users, ...props }) => {
+
+
+  // users.map((e) => console.log(e))
+  const [item, setItem] = useState()
+
+  // console.log(item.length)
+  
+  
+
+  useEffect(() => {
+    if (users.length === 0) {
+      props.thunkAddUserItem()
+    }
+    setItem(users)    
+  }, [item])
+
+  const [filterArr, setFilterArr] = useState([])
+
   const [value, setValue] = useState('')
 
-  const changeValue = (value) => setFilterArr(users.filter((val) => val.name.toLowerCase().indexOf(value.toLowerCase()) >= 0))
+  const changeValue = (value) => setFilterArr(users.itemUser.filter((val) => val.name.toLowerCase().indexOf(value.toLowerCase()) >= 0))
 
   return (
     <>
@@ -34,19 +52,20 @@ const PageIndex = (props) => {
                 avatar={user.avatar}
                 timeMessage={user.timeLastMessage}
                 lastMessage={user.lastMessage}
-                isOnline={user.isOnline} />
+                isOnline={user.isOnline}
+              />
             )
           })}
         </div>
+
         <div className="page-point__section-dialog">
           <div className="page-point__heder-dialog">
-            <img src={users[0].avatar} alt={`avatar ${users[1].fullName}`} />
-            <p>{users[0].name}</p>
+            {/* <img src={item[0].avatar} alt={`avatar`} /> */}
+            {/* <p>{item[0].name}</p> */}
           </div>
-
           <div className="page-point__input-message">
-          <Icon type="paper-clip" className="page-point__paper-clip" />
-            <TextArea
+            <Icon type="paper-clip" className="page-point__paper-clip" />
+            <Input.TextArea
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder="Введите сообщение..."
@@ -54,6 +73,7 @@ const PageIndex = (props) => {
             <div className="hidden_block"></div>
           </div>
         </div>
+
         <div className="page-point__section-profile">
 
         </div>
@@ -62,8 +82,18 @@ const PageIndex = (props) => {
   )
 }
 
+const mapStateToProps = (state) => ({
+  users: state.setUserReducer.itemUser,
+  defObject: {
+    dwdw1: 'ddd',
+    dwdw3: 'ddd',
+    dwdw5: 'ddd',
+    dwdw4: 'ddd',
+    dwdw6: 'ddd',
+  }
+})
 
+export default connect(mapStateToProps, ({ thunkAddUserItem }))(PageIndex)
 
-export default PageIndex;
 
 

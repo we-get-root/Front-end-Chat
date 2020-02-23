@@ -9,6 +9,7 @@ import BlockPage from './_points/Page/index'
 import './app.scss';
 
 
+
 const EntryPoint = (props) => {
   return (
     <>
@@ -16,7 +17,7 @@ const EntryPoint = (props) => {
       <Route exact path={['/regis']} component={ () => <BlockForm><Registration /></BlockForm>} />
 
 
-      <Route exact path={['/page']} component={ () => <BlockPage />} />
+      <Route exact path={['/page']} component={ () => <BlockPage  />} />
     </>
   )
 }
