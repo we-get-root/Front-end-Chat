@@ -7,32 +7,23 @@ import UserItem from './../../_component/UserItem/UserItem'
 import Search from './../../_component/Search/Search'
 import './index.scss';
 
-// import { usersDef } from './testBackend/testBackend'; // <= initial object users (delete after connections redux)
 
+const PageIndex = ({ users, thunkAddUserItem, ...props }) => {
 
-
-const PageIndex = ({ users, ...props }) => {
-
-
-  // users.map((e) => console.log(e))
-  const [item, setItem] = useState()
-
-  // console.log(item.length)
   
+  const [filterArr, setFilterArr] = useState(Array.from(users))
   
-
   useEffect(() => {
     if (users.length === 0) {
-      props.thunkAddUserItem()
+      thunkAddUserItem()
     }
-    setItem(users)    
-  }, [item])
-
-  const [filterArr, setFilterArr] = useState([])
-
+    setFilterArr(users)
+  }, [users])
+  
+  
   const [value, setValue] = useState('')
-
-  const changeValue = (value) => setFilterArr(users.itemUser.filter((val) => val.name.toLowerCase().indexOf(value.toLowerCase()) >= 0))
+  
+  const changeValue = (value) => setFilterArr(users.filter((val) => val.name.toLowerCase().indexOf(value.toLowerCase()) >= 0))
 
   return (
     <>
@@ -84,13 +75,6 @@ const PageIndex = ({ users, ...props }) => {
 
 const mapStateToProps = (state) => ({
   users: state.setUserReducer.itemUser,
-  defObject: {
-    dwdw1: 'ddd',
-    dwdw3: 'ddd',
-    dwdw5: 'ddd',
-    dwdw4: 'ddd',
-    dwdw6: 'ddd',
-  }
 })
 
 export default connect(mapStateToProps, ({ thunkAddUserItem }))(PageIndex)
