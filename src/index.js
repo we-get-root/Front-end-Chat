@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import state from './components/_state/request';
+import App from './ROOT_FOLDER/app';
+import state from './ROOT_FOLDER/_state/request';
 
-window.store = state;
+window.store = state; // <= убрать как только настрою store
 
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={state}>
-      <App />
+      <App/>
     </Provider>
-  </BrowserRouter>, document.getElementById('root'));
+  </BrowserRouter>
+  , document.getElementById('root'));
 
 serviceWorker.unregister();
