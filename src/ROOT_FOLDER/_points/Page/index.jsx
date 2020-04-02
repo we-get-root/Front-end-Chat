@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Empty, Input, Icon } from 'antd';
 import { connect } from 'react-redux';
 
+import {
+  CameraOutlined,
+  SettingOutlined,
+  EllipsisOutlined,
+  TeamOutlined,
+  EditOutlined,
+  UserOutlined,
+  ThunderboltOutlined
+} from '@ant-design/icons';
 
-import { getUsersItem, getUsersDialog, getMy } from '../../_state/request';
+import { getUsersItem, getUsersDialog, getMy, } from '../../_state/request';
 import UserItem from '../../_component/UserItem/UserItem';
 import Search from '../../_component/Search/Search';
 import Message from '../../_component/Message/Message';
@@ -30,7 +39,7 @@ const PageIndex = ({ users, messages, getUsersItem, getUsersDialog, getMy, my, l
         {itemUser.length === 0 ? null : <p>{itemUser[0].name}</p>} */}
       </header>
 
-      <section className="page-point">
+      <div className="page-point">
         <div className="page-point__section-users">
           <div>
             {/* <img src="/logo.full.png" /> */}
@@ -86,18 +95,62 @@ const PageIndex = ({ users, messages, getUsersItem, getUsersDialog, getMy, my, l
           </div>
         </div>
 
-        <div className="page-point__section-profile">
-          <div className="page-point__setting-account">
-                
+        <section className="section-profile">
+          <div className="section-profile__block-user">
+            <SettingOutlined className="button-setting__3VhDbc" />
+            <div className="block-user__fraction_one">
+              <div className="profile-avatar__JZwlIP">
+                <img src={my.avatar} />
+                <button className="button-avatar__gOe3hL">
+                  <CameraOutlined />
+                </button>
+              </div>
+            </div>
+            <div className="block-user__fraction_tho">
+              <h2>{my.fullName}</h2>
+              <p><b>О себе:</b> Привет меня зовут дима я блять крутой чел и нуб в програмировании!</p>
+            </div>
+            <div className="block-user__information-account">
+              <div className="block-user__information-item" style={{gridArea: "a1"}}>
+                <TeamOutlined />
+                <p>1245</p>
+              </div>
+              <div className="block-user__information-item" style={{gridArea: "a2"}}>
+                <EditOutlined />
+                <p>1 245</p>
+              </div>
+              <div className="block-user__information-item" style={{gridArea: "a3"}}>
+                <UserOutlined />
+                <p>1 245</p>
+              </div>
+              <div className="block-user__information-item" style={{gridArea: "a4"}}>
+                <ThunderboltOutlined />
+                <p>1 245</p>
+              </div>
+
+            </div>
+
           </div>
-          <div>
-            <img src={my.avatar} />
-            <h3>{my.fullName}</h3>
-              <p>{ my.status}</p>
+          <div className="section-profile__block-manager">
+            <button className="button-setting__gOe3hL" style={{ gridArea: 'b1' }}>
+              <EllipsisOutlined />
+            </button>
+            <button className="button-setting__gOe3hL" style={{ gridArea: 'b2' }}>
+              <EllipsisOutlined />
+            </button>
+            <button className="button-setting__gOe3hL" style={{ gridArea: 'b3' }}>
+              <EllipsisOutlined />
+            </button>
+            <button className="button-setting__gOe3hL" style={{ gridArea: 'b4', background: 'silver' }}>
+              <EllipsisOutlined />
+            </button>
+
+
           </div>
-            
-        </div>
-      </section>
+
+        </section>
+
+      </div>
     </>
   )
 }
