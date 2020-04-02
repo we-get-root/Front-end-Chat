@@ -1,8 +1,33 @@
+.page-header {
+  display: grid;
+  width: 100%;
+  height: 55px;
+  text-align: center;
+  background-color: #ffffff;
+  box-shadow: 1px 27px 7px 2px rgba(77,77,77,1);
+  border-bottom: 1px solid #d8d8d8;
+  // img {
+  //   display: inline-block;
+  //   width: 40px;
+  //   height: 40px;
+  //   border-radius: 10em;
+  // }
+  // p {
+  //   display: inline-block;
+  //   padding-top: 4px;
+  //   font-size: 16px;
+  //   font-weight: 500;
+  //   margin-top: 5px;
+  //   padding: 10px;
+  // }
+}
+
 .page-point {
   display: grid;
-  grid-template-columns: 360px auto 360px;
+  grid-template-columns: 400px auto 400px;
   grid-template-areas: "user message profile";
   width: 100%;
+  background: silver;
   height: 100%;
   overflow: hidden;
   &__section-users {
@@ -15,31 +40,31 @@
     .ant-empty {
       margin-top: 150px;
     }
-    &::-webkit-scrollbar { 
-      width: 6px; 
-      height: 3px; 
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 3px;
       border-radius: 10em;
     }
-    &::-webkit-scrollbar-button { 
-      background-color: #ffffff; 
-      height: 1px; 
+    &::-webkit-scrollbar-button {
+      background-color: #ffffff;
+      height: 1px;
     }
-    &::-webkit-scrollbar-track { 
-      background-color: #ffffff; 
+    &::-webkit-scrollbar-track {
+      background-color: #ffffff;
       height: 100px;
     }
-    &::-webkit-scrollbar-track-piece { 
+    &::-webkit-scrollbar-track-piece {
       background-color: #ffffff;
     }
-    &::-webkit-scrollbar-thumb { 
-      height: 50px;  
-      background-color: rgba(82, 82, 82, .5); 
+    &::-webkit-scrollbar-thumb {
+      height: 50px;
+      background-color: rgba(82, 82, 82, 0.5);
       border-radius: 13px;
     }
-    &::-webkit-scrollbar-corner { 
+    &::-webkit-scrollbar-corner {
       background-color: #ffffff;
     }
-    &::-webkit-resizer { 
+    &::-webkit-resizer {
       background-color: #ffffff;
     }
     &__search {
@@ -50,68 +75,43 @@
     position: relative;
     grid-area: message;
     display: grid;
-    grid-template-rows: 55px auto auto;
+    // grid-template-rows: 55px auto auto;
     grid-template-areas: 
-    "header"
-    "dialog"
-    "input";
-    background: #FFFFFF;
+      "dialog"
+      "input";
+    background: #ffffff;
     width: 100%;
     height: 100vh;
     position: relative;
-    .page-point__heder-dialog {
-      grid-area: header;
-      width: 100%;
-      height: 55px;
-      text-align: center;
-      background-color: #ffffff;
-      border-right: 1px solid #f6f6f6;
-      border-left: 1px solid #f6f6f6;
-      border-bottom: 1px solid #f6f6f6;
-      img {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 10em;  
-      }
-      p {
-        display: inline-block;
-        padding-top: 4px;
-        font-size: 16px;
-        font-weight: 500;
-        margin-top: 5px;
-        padding: 10px;
-      }
-    }
     .page-point__wrapper-message {
       grid-area: dialog;
       width: 100%;
       overflow: scroll;
-      &::-webkit-scrollbar { 
-        width: 6px; 
-        height: 3px; 
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 3px;
         border-radius: 10em;
       }
-      &::-webkit-scrollbar-button { 
-        background-color: #ffffff; 
-        height: 1px; 
+      &::-webkit-scrollbar-button {
+        background-color: #ffffff;
+        height: 1px;
       }
-      &::-webkit-scrollbar-track { 
-        background-color: #ffffff; 
+      &::-webkit-scrollbar-track {
+        background-color: #ffffff;
         height: 100px;
       }
-      &::-webkit-scrollbar-track-piece { 
+      &::-webkit-scrollbar-track-piece {
         background-color: #ffffff;
       }
-      &::-webkit-scrollbar-thumb { 
-        height: 50px;  
-        background-color: rgba(82, 82, 82, .5); 
+      &::-webkit-scrollbar-thumb {
+        height: 50px;
+        background-color: rgba(82, 82, 82, 0.5);
         border-radius: 13px;
       }
-      &::-webkit-scrollbar-corner { 
+      &::-webkit-scrollbar-corner {
         background-color: #ffffff;
       }
-      &::-webkit-resizer { 
+      &::-webkit-resizer {
         background-color: #ffffff;
       }
     }
@@ -121,13 +121,13 @@
       grid-template-columns: 70px 1fr 1fr 1fr;
       grid-template-areas: "clip input_message input_message input_message .";
       max-height: 200px;
-      background: #F5F5F5;
+      background: #f5f5f5;
       width: 100%;
-      border-right: 1px solid #E4E4E4;
-      border-left: 1px solid #E4E4E4;
-      border-top: 1px solid #E4E4E4;
+      border-right: 1px solid #e4e4e4;
+      border-left: 1px solid #e4e4e4;
+      border-top: 1px solid #e4e4e4;
       border-radius: 3px;
-      transition: .5s ease;
+      transition: 0.5s ease;
       .page-point__paper-clip {
         grid-area: clip;
         display: grid;
@@ -136,15 +136,15 @@
         font-size: 30px;
         cursor: pointer;
         color: silver;
-        transition: .5 ease;
+        transition: 0.5 ease;
         &:hover {
-          transition: .5 ease;
+          transition: 0.5 ease;
           color: grey;
         }
       }
       .ant-input {
         grid-area: input_message;
-        transition: .5s ease;
+        transition: 0.5s ease;
         margin-top: 20px;
         margin-left: 0px;
         font-size: 15px;
@@ -159,31 +159,31 @@
           border-color: #ffffff;
           box-shadow: 1px silver;
         }
-        &::-webkit-scrollbar { 
-          width: 6px; 
-          height: 3px; 
+        &::-webkit-scrollbar {
+          width: 6px;
+          height: 3px;
           border-radius: 10em;
         }
-        &::-webkit-scrollbar-button { 
-          background-color: #ffffff; 
-          height: 1px; 
+        &::-webkit-scrollbar-button {
+          background-color: #ffffff;
+          height: 1px;
         }
-        &::-webkit-scrollbar-track { 
-          background-color: #ffffff; 
+        &::-webkit-scrollbar-track {
+          background-color: #ffffff;
           height: 100px;
         }
-        &::-webkit-scrollbar-track-piece { 
+        &::-webkit-scrollbar-track-piece {
           background-color: #ffffff;
         }
-        &::-webkit-scrollbar-thumb { 
-          height: 50px;  
-          background-color: rgba(82, 82, 82, .5); 
+        &::-webkit-scrollbar-thumb {
+          height: 50px;
+          background-color: rgba(82, 82, 82, 0.5);
           border-radius: 13px;
         }
-        &::-webkit-scrollbar-corner { 
+        &::-webkit-scrollbar-corner {
           background-color: #ffffff;
         }
-        &::-webkit-resizer { 
+        &::-webkit-resizer {
           background-color: #ffffff;
         }
         &__search {
@@ -199,8 +199,3 @@
     background: #ffffff;
   }
 }
-
-
-
-
-

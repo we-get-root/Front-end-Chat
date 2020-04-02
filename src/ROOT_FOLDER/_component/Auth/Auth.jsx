@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom';
 import { DecoratorForm } from '../../_modules/decorator/warnInvalidForm';
 import { validateForms } from '../../_modules/validate/validateForm';
 
+import store from '../../_state/request';
 import { userAuthorization } from '../../_state/request';
 
 import './auth.scss';
 
 
-const FormAuth = ({ value: { email, password }, touched, isValidateStatus, ...props }) => {
+const FormAuth = ({ value: { email, password }, touched, isValidateStatus, isSubmitting, ...props }) => {
+
   const forEmail = isValidateStatus('email')
   const forPassword = isValidateStatus('password')
   return (
@@ -52,6 +54,7 @@ const FormAuth = ({ value: { email, password }, touched, isValidateStatus, ...pr
             <Button
               className="login__button-large"
               type="submit"
+              disabled={isSubmitting}
               onClick={props.handleSubmit}
               size="large"
               block > войти </Button>
@@ -74,11 +77,13 @@ export const Authorization = withFormik({
 
   validate: (value) => (validateForms.checkKeys(value)),
 
-  handleSubmit: (values, { setSubmitting }, dispatch) => {
+  handleSubmit: (values, { setSubmitting }) => {
 
-    userAuthorization(values)
+    setSubmitting(true)
+    store.dispatch(userAuthorization(values)).then(() => {
+      setSubmitting(false)
+    }).catch(() => setSubmitting(false))
 
-    setSubmitting(false)
   },
   displayName: 'FormAuth',
 })(Container);

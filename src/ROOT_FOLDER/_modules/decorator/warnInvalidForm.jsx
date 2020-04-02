@@ -1,6 +1,5 @@
 export const DecoratorForm = (props) => {
-	const { component, values, touched, errors, handleChange, handleBlur, handleSubmit } = props; // <= these values are taken from withForm;
-
+	const { component, values, touched, errors, handleChange, handleBlur, handleSubmit, isSubmitting } = props; // <= these values are taken from withForm;
 	const modules = {
 		_isEmptyCheck: function (obj, forInput) {
 			// check if the touch was then there is an error;
@@ -38,6 +37,7 @@ export const DecoratorForm = (props) => {
 			handleChange: handleChange,
 			handleBlur: handleBlur,
 			handleSubmit: handleSubmit,
+			isSubmitting: isSubmitting,
 			...props
 		})
 	)
