@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Empty, Input, Icon } from 'antd';
 import { connect } from 'react-redux';
 
+import ava from '../../_imagine/avatar__.jpg'
+
 import {
   CameraOutlined,
   SettingOutlined,
@@ -95,6 +97,7 @@ const PageIndex = ({ users, messages, getUsersItem, getUsersDialog, getMy, my, l
           </div>
         </div>
 
+
         <section className="section-profile">
           <div className="section-profile__block-user">
             <SettingOutlined className="button-setting__3VhDbc" />
@@ -106,31 +109,71 @@ const PageIndex = ({ users, messages, getUsersItem, getUsersDialog, getMy, my, l
                 </button>
               </div>
             </div>
-            <div className="block-user__fraction_tho">
+            <div className="block-user__fraction_two">
               <h2>{my.fullName}</h2>
               <p><b>О себе:</b> Привет меня зовут дима я блять крутой чел и нуб в програмировании!</p>
             </div>
-            <div className="block-user__information-account">
-              <div className="block-user__information-item" style={{gridArea: "a1"}}>
+            <div className="block-user__statistics-account">
+              <div className="block-user__statistics-item" style={{ gridArea: "a1" }}>
                 <TeamOutlined />
                 <p>1245</p>
               </div>
-              <div className="block-user__information-item" style={{gridArea: "a2"}}>
+              <div className="block-user__statistics-item" style={{ gridArea: "a2" }}>
                 <EditOutlined />
                 <p>1 245</p>
               </div>
-              <div className="block-user__information-item" style={{gridArea: "a3"}}>
+              <div className="block-user__statistics-item" style={{ gridArea: "a3" }}>
                 <UserOutlined />
                 <p>1 245</p>
               </div>
-              <div className="block-user__information-item" style={{gridArea: "a4"}}>
+              <div className="block-user__statistics-item" style={{ gridArea: "a4" }}>
                 <ThunderboltOutlined />
                 <p>1 245</p>
               </div>
-
             </div>
+          </div>
+          <div className="section-profile__block-friends">
+            <div className="title-block__friends" onClick={() => alert('hello')}>
+              <h3>Friends</h3>
+              <span></span>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valeradddfff</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+            <div className="test_avatar_user">
+              <div><img src={ava} alt="avatar" /></div>
+              <p>Valera</p>
+            </div>
+          </div>
+          <div className="section-profile__block-photos">
 
           </div>
+          {/*           
           <div className="section-profile__block-manager">
             <button className="button-setting__gOe3hL" style={{ gridArea: 'b1' }}>
               <EllipsisOutlined />
@@ -144,9 +187,7 @@ const PageIndex = ({ users, messages, getUsersItem, getUsersDialog, getMy, my, l
             <button className="button-setting__gOe3hL" style={{ gridArea: 'b4', background: 'silver' }}>
               <EllipsisOutlined />
             </button>
-
-
-          </div>
+          </div> */}
 
         </section>
 
